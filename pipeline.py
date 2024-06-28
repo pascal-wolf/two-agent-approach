@@ -1,6 +1,5 @@
 from config import MAPPINGS, DATA_ROOT
 import pandas as pd
-import duckdb
 
 
 def consolidation(df: pd.DataFrame, source: str) -> pd.DataFrame:
@@ -17,18 +16,6 @@ def consolidation(df: pd.DataFrame, source: str) -> pd.DataFrame:
     df = df.rename(columns=MAPPINGS[source])
     df = df[MAPPINGS[source].values()]
     return df
-
-
-def write_database(data, source):
-    # 1. Check if data is in correct format
-    # 2. Write data to database
-    # 3. Return success message
-    return ""
-
-
-def embedding_creation(df):
-    return df
-
 
 def read_data(source: str):
     """
