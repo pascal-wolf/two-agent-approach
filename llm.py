@@ -6,12 +6,31 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.runnables import RunnableParallel
 from langchain_community.chat_models import ChatOllama
+import ollama
 
-from prompts import RAG_PIPELINE
+from prompts import RAG_PIPELINE, CLASSIFICATION_PROMPT, COMPOUND_PROMPT
 
 
 def _format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
+
+
+def compound_answer(question):
+    stream = ollama.chat(
+        model="llama3",
+        stream=True,
+        messages=[
+            {
+                "role": "system",
+                "content": COMPOUND_PROMPT,
+            },
+            {
+                "role": "user",
+                "content": question,
+            },
+        ],
+    )
+    return stream
 
 
 def rag_pipeline():
@@ -62,6 +81,32 @@ def create_embeddings(df):
         index_name="reviews-main-v5",
     )
     rds.write_schema("redis_schema_v5.yaml")
+
+
+def classify_question(question: str) -> str:
+    """
+    Classifies a question using the Ollama chat model.
+
+    Parameters:
+    question (str): The question to be classified.
+
+    Returns:
+    str: The classification result from the Ollama chat model.
+    """
+    response = ollama.chat(
+        model="llama3",
+        messages=[
+            {
+                "role": "system",
+                "content": CLASSIFICATION_PROMPT,
+            },
+            {
+                "role": "user",
+                "content": question,
+            },
+        ],
+    )
+    return response["message"]["content"]
 
 
 # stream = ollama.chat(
