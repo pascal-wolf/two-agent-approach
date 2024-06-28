@@ -5,6 +5,7 @@ from llm import rag_pipeline
 
 
 def stream_parser(stream):
+
     for chunk in stream:
         if "answer" in chunk.keys():
             yield chunk["answer"]
@@ -34,12 +35,16 @@ def assistent_message(message, i):
             st.button("👎", key=uuid.uuid4())
 
 
+def get_context(stream):
+    for chunk in stream:
+        if "context" in chunk.keys():
+            return chunk["context"]
+
+
 if __name__ == "__main__":
 
     with st.sidebar:
         st.title("Context")
-
-    st.title("Reviews Chat")
 
     if "messages" not in st.session_state:
         st.session_state["messages"] = [
@@ -78,17 +83,23 @@ if __name__ == "__main__":
             chain = rag_pipeline(prompt)
             stream = chain.stream(input="What positive do people think about the apps?")
 
+            context = get_context(stream)
+
             col1, col2, col3 = st.columns([10, 1, 1])
             with col1:
-                with st.spinner("Thinking..."):
-                    stream_output = st.write_stream(stream_parser(stream))
+                stream_output = st.write_stream(stream_parser(stream))
             with col2:
                 st.button("👍", key=uuid.uuid4())
             with col3:
                 st.button("👎", key=uuid.uuid4())
 
-            # assistent_message(stream_output, -1)
-
             st.session_state.messages.append(
                 {"role": "assistant", "content": stream_output}
             )
+        with st.sidebar:
+            st.divider()
+            for i, document in enumerate(context):
+                col1, col2 = st.columns([10, 1])
+                with col1:
+                    st.write(document.page_content)
+                st.divider()

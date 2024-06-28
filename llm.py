@@ -53,13 +53,15 @@ def create_embeddings(df):
     metadata_columns.remove("content")
     metadata = df[metadata_columns].to_dict("records")
     texts = df["content"].tolist()
+
     rds = Redis.from_texts(
         texts[:1000],
         embeddings,
         metadatas=metadata[:1000],
         redis_url="redis://localhost:6379",
-        index_name="reviews-main",
+        index_name="reviews-main-v5",
     )
+    rds.write_schema("redis_schema_v5.yaml")
 
 
 # stream = ollama.chat(

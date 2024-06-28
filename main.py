@@ -5,7 +5,7 @@ import time
 if __name__ == "__main__":
     sources = ["chatgpt", "netflix", "spotify"]
     RUN_OLD_PIPELINE = False
-    RUN_EMBEDDINGS = False
+    RUN_EMBEDDINGS = True
 
     start = time.time()
     for source in sources:
