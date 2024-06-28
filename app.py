@@ -80,8 +80,8 @@ if __name__ == "__main__":
             #     messages=st.session_state.messages,
             #     stream=True,
             # )
-            chain = rag_pipeline(prompt)
-            stream = chain.stream(input="What positive do people think about the apps?")
+            chain = rag_pipeline()
+            stream = chain.stream(input=prompt)
 
             context = get_context(stream)
 

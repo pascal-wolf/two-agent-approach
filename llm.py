@@ -14,7 +14,7 @@ def _format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
 
-def rag_pipeline(prompt):
+def rag_pipeline():
     embedder = OllamaEmbeddings(model="llama3")
 
     vectorstore = Redis.from_existing_index(
