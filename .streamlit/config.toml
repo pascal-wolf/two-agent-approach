@@ -1,0 +1,4 @@
+[ui]
+hideTopBar = true
+[browser]
+serverAddress = 'localhost'
