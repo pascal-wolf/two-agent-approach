@@ -22,7 +22,8 @@ MAPPINGS = {
 
 DATA_ROOT = "data"
 
+REDIS_URL = "redis://localhost:6379"
 
-# reviewId, userName, content, score, thumbsUpCount, reviewCreatedVersion, at, appVersion
-# id, name, content, score, likes, created, at, version
-# Time_submitted, Review, Rating, Total_thumbsup, Reply
+REDIS_INDEX_NAME = "reviews-main-v5"
+
+REDIS_SCHEMA = "redis_schema.yaml"
