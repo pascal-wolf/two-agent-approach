@@ -2,6 +2,7 @@ import uuid
 from typing import Any, Dict, Generator, Iterable
 
 import streamlit as st
+from PIL import Image
 
 from llm import (
     classify_question,
@@ -112,6 +113,11 @@ def get_context(stream: Iterable[Dict[str, Any]]) -> Any:
 
 
 if __name__ == "__main__":
+
+    st.set_page_config(
+        page_title="Reviews Chat",
+        page_icon=Image.open("favicon.ico"),
+    )
 
     with st.sidebar:
         st.title("Context")
