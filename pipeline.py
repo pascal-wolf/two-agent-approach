@@ -18,6 +18,7 @@ def consolidation(df: pd.DataFrame, source: str) -> pd.DataFrame:
     df = df[MAPPINGS[source].values()]
     return df
 
+
 def read_data(source: str):
     """
     Reads a CSV file from a specified source and returns it as a pandas DataFrame.
@@ -98,6 +99,8 @@ def clean(df: pd.DataFrame, run_old_pipeline: bool, source: str) -> pd.DataFrame
     df["created_date"] = pd.to_datetime(df["created_date"])
     # Null Values
     df = df.dropna(subset=["content"])
+    # Change dtype
+    df["likes"] = df["likes"].astype(float)
 
     # Get weekday
     if run_old_pipeline:
@@ -120,7 +123,8 @@ def clean(df: pd.DataFrame, run_old_pipeline: bool, source: str) -> pd.DataFrame
         )
     else:
         df["likes_weighted"] = df["likes"]
-        df.loc[df["likes"] > df["likes"].mean(), "likes_weighted"] = df[
-            "likes_weighted"
-        ]
+        df.loc[df["likes"] > df["likes"].mean(), "likes_weighted"] = (
+            df["likes_weighted"] * 0.5
+        )
+
     return df
