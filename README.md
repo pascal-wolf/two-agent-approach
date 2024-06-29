@@ -1,6 +1,6 @@
 # Multi-Agent LLM Approach
 
-This repository focuses on the analysis of airport reviews taken from the [skytrax dataset](https://github.com/quankiquanki/skytrax-reviews-dataset/blob/master/data/airport.csv) available on github.
+This repository focuses on a Multi-Agent LLM approach in which different agents are able to answer qualitative and quantitative questions.
 
 ![alt text](/images/demo_ui.png)
 
