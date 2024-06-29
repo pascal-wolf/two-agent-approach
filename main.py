@@ -1,6 +1,7 @@
-from pipeline import read_data, clean, consolidation
-from llm import create_embeddings
 import time
+
+from llm import create_embeddings
+from pipeline import clean, consolidation, read_data
 
 if __name__ == "__main__":
     sources = ["chatgpt", "netflix", "spotify"]

@@ -1,5 +1,6 @@
-from config import MAPPINGS, DATA_ROOT
 import pandas as pd
+
+from config import DATA_ROOT, MAPPINGS
 
 
 def consolidation(df: pd.DataFrame, source: str) -> pd.DataFrame:
