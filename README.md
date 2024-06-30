@@ -17,9 +17,9 @@ pip install -r requirements.txt
 
 It is needed to install ollama and download the relevant model (llama3) locally. Please refer to the [ollama documentation](https://ollama.com/) for that.
 
-Before running the pipeline or the chat tool, you have to run the Redis docker container.
+Before running the pipeline or the chat tool, you have to run the Redis docker container (add -d if you want to run it in the backround).
 ```bash
-docker compose up
+docker compose up -d
 ```
 
 In order to process the datasets please run the pipeline as the following.
