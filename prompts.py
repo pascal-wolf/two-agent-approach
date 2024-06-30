@@ -1,7 +1,6 @@
 RAG_PIPELINE = """
 Use the following pieces of context from the review datasets from the spotify app, chatgpt app and netflix app
-to answer the question. Do not make up an answer if there is no
-context provided to help answer it.
+to answer the question. Do not make up an answer if there is no context provided to help answer it.
 Do not just repeat what it says in the context, but use the context to help you answer the question.
 Context:
 ---------
@@ -50,7 +49,7 @@ User question: How many reviews have more than 10 likes?
 Answer from you: @likes:[10 +inf]
 
 The correct syntax for a text and numeric question is the following:
-text_field @numeric_field:[value_numeric_field]
+@text_field:text_value @numeric_field:[value_numeric_field]
 
 Please always only return with the query! If you can't come up with a query only return the following two letters: na
 
