@@ -54,8 +54,6 @@ text_field @numeric_field:[value_numeric_field]
 
 Please always only return with the query! If you can't come up with a query only return the following two letters: na
 
-
-
 The database schema is the following:
 numeric:
 - name: score
