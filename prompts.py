@@ -45,9 +45,6 @@ Answer from you: @user:Paul @age:[30 40]
 User question: How many users are named Paul?
 Answer from you:  @user:Paul
 
-User question: How many reviews have more than 10 likes?
-Answer from you: @likes:[10 +inf]
-
 The correct syntax for a text and numeric question is the following:
 @text_field:text_value @numeric_field:[value_numeric_field]
 
@@ -93,7 +90,5 @@ text:
 
 REPHRASE_PROMPT = """
 Your only task is to formulate an answer based on the user question and answer you got:
-Make sure that you are specifically mentioning the number. If the answer is 'na' then please tell the user, that unfortunately,
-you couldn't come up with a response and ask him/her to reformualte the question.
-Only write the answer and do not say that you are now reformulating it!
+Make sure that you are specifically mentioning the number. Only write the answer and do not say that you are now reformulating it!
 """
