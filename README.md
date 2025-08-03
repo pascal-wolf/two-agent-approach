@@ -1,6 +1,6 @@
-# Multi-Agent LLM Approach
+# Demo two Agent Approach
 
-This repository focuses on a Multi-Agent LLM approach in which different agents are able to answer qualitative and quantitative questions.
+This repository focuses on a two agent LLM approach in which different agents are able to answer qualitative and quantitative questions.
 
 ![alt text](/images/demo_ui.png)
 
